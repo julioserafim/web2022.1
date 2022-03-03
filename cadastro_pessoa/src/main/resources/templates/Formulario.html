@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+
 
 <head>
 <title> Formulário </title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 </head>
 
 <body>
 
-<form action="/pessoa/salvar" method="POST">
-Nome: <input type="text" name="nome"> <br>
-Time: <input type="text" name="time"> </br>
+
+<form action="/pessoa/salvar" method="POST" th:object="${pessoa}">
+<input type="hidden" th:field="*{codigo}">
+
+Nome: <input type="text" th:field="*{nome}"> </br>
+Time: <input type="text" th:field="*{time}"> </br>
+Data Nascimento: <input type="text" th:field="*{dataNascimento}"> </br>
 
 <br>
 
-<input type="submit" value="Cadastrar">
+<button th:if="${pessoa.codigo == null}" th:text="Cadastrar"> </button>
+<!--<input type="submit" value="Cadastrar">-->
+
+<button th:if="${pessoa.codigo != null}" th:text="Atualizar"> </button>
+
 
 </form>
+
+<src="/js/bootstrap.min.js"/> 
 
 </body>
 

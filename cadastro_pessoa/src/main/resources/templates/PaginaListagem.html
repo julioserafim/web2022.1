@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title> Página Listagem </title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Codigo</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Time</th>
+				<th scope="col">Data Nascimento</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "pessoa:${pessoas}">
+				<td th:text = "${pessoa.codigo}"> </td>
+				<td th:text = "${pessoa.nome}"> </td>
+				<td th:text= "${pessoa.time}"> </td>
+				<td th:text= "${{pessoa.dataNascimento}}"> </td>
+				<td> <a th:href="@{/pessoa/excluir/{codigo}(codigo = ${pessoa.codigo})}"  class="btn btn-danger">  Excluir </a> </td>
+				<td> <a th:href="@{/pessoa/atualizar/{codigo}(codigo = ${pessoa.codigo})}"  class="btn btn-primary">  Atualizar </a></td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+
+
+	<src="/js/bootstrap.min.js"/> 
+</body>
+
+
+</html>
